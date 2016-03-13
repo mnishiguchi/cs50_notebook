@@ -1,0 +1,28 @@
+######################
+# Regular expressions
+######################
+
+Example 1
+
+  if (!preg_match("{(?:login|logout|register)\.php$}", $_SERVER["PHP_SELF"]))
+
+    (?: ) : the non-capturing group, specified items by themselves are not counted
+    \.  : escape sequence for dot
+    $   :  means look only at the end of the target string
+    { } : delimiter
+
+
+Example 2
+
+  if (preg_match("/^\^/", $symbol))
+
+    / / : delimiter. Can be other symbols such as #, %, + etc.
+    ^   : metacharacter, meaning look only at the beginning of the target string
+    \^  : escape sequence for ^
+      
+
+Reference
+
+    http://www.php.net/manual/en/regexp.reference.subpatterns.php
+    http://www.zytrax.com/tech/web/regex.htm#intro
+    http://msdn.microsoft.com/en-us/library/az24scfc(v=vs.110).aspx

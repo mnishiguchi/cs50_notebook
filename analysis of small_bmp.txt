@@ -1,0 +1,30 @@
+/**
+ * analysis of "small.bmp"
+ * 
+ * Masatoshi Nishiguchi
+ */  
+    
+BITMAPFILEHEADER (14 Bytes)
+    WORD   bfType           42 4d
+    DWORD  bfSize           5a 00 00 00  (= 90 in decimal) 14+40+36 = 90!!!
+    WORD   bfReserved1;     00 00
+    WORD   bfReserved2;     00 00
+    DWORD  bfOffBits;       36 00 00 00
+
+BITMAPINFOHEADER (40 Bytes)
+    DWORD  biSize;          28 00 00 00
+    LONG   biWidth;         03 00 00 00
+    LONG   biHeight;        fd ff ff ff
+    WORD   biPlanes;        01 00 
+    WORD   biBitCount;      18 00
+    DWORD  biCompression;   00 00 00 00
+    DWORD  biSizeImage;     24 00 00 00
+    LONG   biXPelsPerMeter; 12 0b 00 00
+    LONG   biYPelsPerMeter; 12 0b 00 00
+    DWORD  biClrUsed;       00 00 00 00
+    DWORD  biClrImportant;  00 00 00 00 
+    
+Bitmap (3*4*3 = 36 Bytes)
+    00ff00 00ff00 00ff00 000000
+    00ff00 ffffff 00ff00 000000
+    00ff00 00ff00 00ff00 000000   

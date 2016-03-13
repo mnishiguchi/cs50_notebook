@@ -1,0 +1,15 @@
+######################
+#   PHP_cookie.txt   
+######################
+
+
+Even though HTTP is a "stateless" protocol, whereby browsers are supposed to
+disconnect from servers as soon as they’re done downloading pages,
+"cookies" allow browsers to remind servers who they or, really, you are on subsequent requests for content.
+
+PHP uses "session cookies" to provide you with $_SESSION, an associative array
+in which you can store any data to which you’d like to have access for the duration of some user’s visit.
+
+The moment a user ends his or her "session" (i.e., visit) by quitting his or her browser,
+the contents of $_SESSION are lost for that user specifically
+because the next time that user visits, he or she will be assigned a new cookie!

@@ -1,0 +1,181 @@
+/**
+ * service.css
+ *
+ * Computer Science 50
+ * Problem Set 8
+ *
+ * Global stylesheet.
+ *
+ * Masatoshi Nishiguchi
+ * nishiguchi.masa@gmail.com
+ */
+       
+html
+{
+    height: 100%;
+}
+
+body
+{
+    font-family: sans-serif;
+    height: 100%;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+#announcements
+{
+    text-align: center
+}
+
+#chart
+{
+    background-color: #ECECEA;
+    position: absolute;
+    width: 220px;
+    height: 190px;
+    top: 80px;
+    border-bottom: 1px #cccccc solid;
+    border-top: 1px #cccccc solid;
+    box-shadow: inset 0 10px 10px -10px #999999, 
+                inset 0 -10px 10px -10px #999999;
+                
+    padding: 18px;
+                
+    font-size: smaller;
+
+    overflow-y: scroll;
+}
+#tableFrame
+{
+    border: 1px solid #909090;
+    
+}
+table, td
+{
+    border: 3px solid white;
+}
+td{
+    height: 30px;
+    width: 80px;
+    text-align: center;
+    color: #ffffff;
+    background-color: #909090;
+}
+#seat
+{
+    color: #fff;
+    background-color: #67BCDB;
+}
+#house
+{ 
+    background-color: #A2AB58;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    padding: 5px;
+    color: #ffffff;
+}
+#eachGroup
+{
+    border: 1px solid black;
+    background-color: #ffffff;
+}
+
+#instructions
+{
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+#autopilot
+{
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#controls
+{
+    position: relative;
+    width: 100%;
+}
+
+#getAddress
+{
+    margin: 5px;
+}
+
+#bottonBox-1
+{
+    background-color: #E0E0E0 ;
+    position: absolute;
+    width: 100px;
+    top: 80px;
+    right: 0px;
+    bottom: 360px;
+    text-align: center;
+}
+
+#bottonBox-2
+{
+    background-color: #E0E0E0 ;
+    position: absolute;
+    right: 0px;
+    bottom: 320px; 
+}
+
+#bottonBox-3
+{
+    position: absolute;
+    bottom: 320px;
+    height: 35px;  
+}
+
+#earth
+{
+    border-right: 1px #cccccc solid;
+    height: 100%;
+    margin-right: 320px;
+}
+
+#left
+{
+    float: right; 
+    height: 100%;
+    width: 100%
+}
+
+#logo
+{
+    background-color: #E44424;
+    padding: 2px;
+    
+    color : #ffffff;  
+    font-size: x-large;
+    font-weight: bold;
+    text-align: center;
+}
+
+small
+{
+    font-size: 8pt;
+    font-weight: normal;
+}
+
+#map
+{
+    bottom: 0;
+    height: 320px;
+    position: absolute;
+    width: 320px;
+}
+
+#right
+{
+    float: right;
+    height: 100%;
+    margin-right: -100%;
+    width: 320px;
+}
+
+

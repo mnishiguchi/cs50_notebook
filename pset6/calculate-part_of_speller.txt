@@ -1,0 +1,42 @@
+/**
+ * Returns number of seconds between b(before) and a(after).
+ *
+ * Provided by cs50, as part of speller.c
+ * Commented by Masatoshi Nishiguchi
+ */
+ 
+double calculate(const struct rusage* b, const struct rusage* a)
+{
+    if (b == NULL || a == NULL)
+    {
+        return 0.0;
+    }
+    else
+    {
+        return 
+        (
+            (
+                (
+                    /*-----------------------------------------*/
+                    /* tv_usec: time interval in seconds       */
+                    /* tv_usec: time interval in microseconds  */ 
+                    /*-----------------------------------------*/
+                    
+                    // ru_utime (user CPU time used) in microseconds
+                    // after - before
+                    (a->ru_utime.tv_sec * 1000000 + a->ru_utime.tv_usec) -
+                    (b->ru_utime.tv_sec * 1000000 + b->ru_utime.tv_usec)
+                )
+                    +       // plus
+                (
+                    // ru_stime (system CPU time used) in microseconds
+                    // after - before
+                    (a->ru_stime.tv_sec * 1000000 + a->ru_stime.tv_usec) -
+                    (b->ru_stime.tv_sec * 1000000 + b->ru_stime.tv_usec)
+                )
+                
+            // Convert the measurement unit from microseconds to seconds
+            ) / 1000000.0
+        );
+    }
+}

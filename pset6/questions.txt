@@ -1,0 +1,141 @@
+/****************************************************************************
+ * questions.txt
+ *
+ * Computer Science 50
+ * Problem Set 6
+ *
+ * Masatoshi Nishiguchi
+ * nishiguchi.masa@gmail.com
+ ***************************************************************************/
+
+#0. What is pneumonoultramicroscopicsilicovolcanoconiosis?
+
+        an obscure term ostensibly referring to a lung disease caused 
+        by silica dust, sometimes cited as one of the longest words in the 
+        English language.
+
+        Source: http://dictionary.reference.com/ (May 17, 2014)
+
+
+#1. What does getrusage do?
+        
+        getrusage() returns resource usage measures for who, which can be one
+        of the following:
+        
+        RUSAGE_SELF
+              Return resource usage statistics for the calling process,  which
+              is the sum of resources used by all threads in the process.
+
+        RUSAGE_CHILDREN
+              Return resource usage statistics for all children of the calling
+              process that have terminated and been waited for.  These statis-
+              tics  will include the resources used by grandchildren, and fur-
+              ther removed descendants, if all of the intervening  descendants
+              waited on their terminated children.
+
+        RUSAGE_THREAD (since Linux 2.6.26)
+              Return resource usage statistics for the calling thread.
+   
+
+#2. How many members are in a variable of type struct rusage?
+        
+        16 members such as following:
+        
+        struct rusage {
+            struct timeval ru_utime; /* user CPU time used */
+            struct timeval ru_stime; /* system CPU time used */
+            long   ru_maxrss;        /* maximum resident set size */
+            long   ru_ixrss;         /* integral shared memory size */
+            long   ru_idrss;         /* integral unshared data size */
+            long   ru_isrss;         /* integral unshared stack size */
+            long   ru_minflt;        /* page reclaims (soft page faults) */
+            long   ru_majflt;        /* page faults (hard page faults) */
+            long   ru_nswap;         /* swaps */
+            long   ru_inblock;       /* block input operations */
+            long   ru_oublock;       /* block output operations */
+            long   ru_msgsnd;        /* IPC messages sent */
+            long   ru_msgrcv;        /* IPC messages received */
+            long   ru_nsignals;      /* signals received */
+            long   ru_nvcsw;         /* voluntary context switches */
+            long   ru_nivcsw;        /* involuntary context switches */
+        };
+
+
+#3. Why are before and after are passed by reference (instead of by value)
+    to calculate, even though we’re not changing their contents?
+
+        Since 'before' and 'after' are structs with a series of 16 members in
+        them, we want to pass the starting point of the structs and get 
+        getrusage to fill data in all the 16 consecutive fields.
+        
+
+#4. How does main go about reading words from a file?
+
+        The spell-check section of speller.c keeps on reading one character 
+        at a time from a file. It ensures that a scanned character is an 
+        alphabetical character or, unless being the first letter of a word,
+        apostrophe. Then it stores the character in a character array.
+
+        There are two conditions that make words invalid:
+
+            - If array index exceeds LENGTH (= 45), the character string is 
+            not an English word, given the fact 45 is the longest of English 
+            words. Therefore we proceed to next word by consuming remainder of
+            alphabetical string.
+            - If text includes numbers, it can be considered as invalid.
+            Therefore we move on to following word by eating up remaining 
+            alphanumeric string and zeroing index.
+
+        When a scanned character is not an alphabetical one nor apostrophe, 
+        index greater than zero means that we have found a whole word with
+        length the index indicates. 
+        
+        To finish off with a current whole word, a null-terminater is added to
+        it, then update word counter.
+        
+
+#5. Why did we use fgetc to read each word’s characters one at a time
+    rather than use fscanf to read whole words at a time?
+
+        Because, by using fgetc, we can evaluate every single letter one by one
+        and take appropriate action to handle each words.
+        
+        If we rely on fscanf alone, we could not identify invalid srings,
+        such as numbers, non-alphabetic characters except apostrophe. 
+        Also, we could not avoid buffer overrun when there is a string with
+        more than 45 letters. It would be difficult to format fscanf in a
+        way that matches all the strings of letters from a file.
+        
+        
+#6. Why do you think we declared the parameters for check and load as const?
+        
+        To explicitly declare that a character-type pointer passed to these 
+        functions will not be modified inside of the functions.
+
+
+#7. What data structure(s) did you use to implement your spell-checker?
+
+        I used hash table with linked list. 
+        Each element of hash table has a pointer to head of linked list if any
+        node exists; otherwise NULL.
+        Each node of linked list consists of word and pointer to next node.
+        
+
+#8. How slow was your code the first time you got it working correctly?
+
+        0.70 seconds
+        
+
+#9. What kinds of changes, if any, did you make to your code over the course
+    of the week in order to improve its performance?
+
+        Optimizing hash table's size
+        
+
+#10.Do you feel that your code has any bottlenecks that you were not able to
+    chip away at?
+
+        No, I am confident about this particular code with hash table; however,
+        I was not able to implement it with trie, which is a challenge for me.
+        
+        
